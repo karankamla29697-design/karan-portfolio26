@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Karan Jeevan — Futuristic Portfolio (Final)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config = {{darkMode:'class'}};</script>
+<style>
+:root{{--bg:#070617;--card:#0b1220;--muted:#9aa8bf;--accent:#7c3aed}}
+html.dark{{--bg:#03040a;--card:#071028;--muted:#8fa3c0}}
+body{{background:radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.06), transparent), linear-gradient(180deg,#020617,#071028);color:#e6eef8;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;margin:0}}
+.container{{max-width:1100px;margin:0 auto;padding:32px}}
+.header{{display:flex;justify-content:space-between;align-items:center;gap:16px}}
+.big-title{{font-weight:800;font-size:44px;line-height:1.02;background:linear-gradient(90deg,#9f7aea,#7c3aed);-webkit-background-clip:text;background-clip:text;color:transparent}}
+.card{{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}}
+.robot-wrap{{width:420px;height:420px;display:flex;align-items:center;justify-content:center;position:relative}}
+.robot-scene{{width:360px;height:360px;border-radius:28px;padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));box-shadow:0 20px 50px rgba(2,6,23,0.6);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.03)}}
+.grid-bg{{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);background-size:40px 40px;opacity:0.25;pointer-events:none}}
+.eye-blink{{animation:blink 5s infinite;transform-origin:center}}
+@keyframes blink{{0%,92%,100%{{transform:scaleY(1)}}95%{{transform:scaleY(0.08)}}}}
+.dot{{position:absolute;width:8px;height:8px;border-radius:999px;background:linear-gradient(90deg,#7c3aed,#4f46e5);opacity:0.9;filter:blur(6px)}}
+.dot.one{{left:10%;top:12%;animation:float1 6s ease-in-out infinite}}
+.dot.two{{right:14%;top:6%;animation:float2 7s ease-in-out infinite}}
+.dot.three{{left:24%;bottom:8%;animation:float3 8s ease-in-out infinite}}
+@keyframes float1{{0%{{transform:translateY(0)}}50%{{transform:translateY(18px)}}100%{{transform:translateY(0)}}}}
+@keyframes float2{{0%{{transform:translateY(0)}}50%{{transform:translateY(-20px)}}100%{{transform:translateY(0)}}}}
+@keyframes float3{{0%{{transform:translateY(0)}}50%{{transform:translateY(24px)}}100%{{transform:translateY(0)}}}}
+.resume-modal{{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(0deg, rgba(2,6,23,0.7), rgba(2,6,23,0.7));z-index:80;display:none}}
+.resume-panel{{width:90%;max-width:1100px;height:85%;background:linear-gradient(180deg,#091226,#071028);border-radius:12px;padding:12px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 30px 80px rgba(2,6,23,0.7)}}
+.resume-frame{{width:100%;height:100%;border:0;background:#071028}}
+.fab{{position:fixed;right:18px;bottom:18px;width:64px;height:64px;border-radius:999px;background:linear-gradient(90deg,#7c3aed,#4f46e5);display:flex;align-items:center;justify-content:center;box-shadow:0 18px 40px rgba(79,70,229,0.18);z-index:90;cursor:pointer}}
+.chat-panel{{position:fixed;right:18px;bottom:100px;width:360px;background:linear-gradient(180deg,#071028,#050617);border-radius:12px;padding:8px;border:1px solid rgba(255,255,255,0.04);display:none;z-index:95}}
+.chat-body{{height:260px;overflow:auto;padding:8px;border-radius:8px;background:rgba(255,255,255,0.01);margin-bottom:8px}}
+.btn{{padding:10px 14px;border-radius:999px;font-weight:600;display:inline-flex;gap:10px;align-items:center}}
+.btn-primary{{background:linear-gradient(90deg,#7c3aed,#4f46e5);color:white}}
+.small{{font-size:13px;color:#9aa8bf}}
+</style>
+</head>
+<body class="dark">
+
+<div class="container">
+  <div class="header">
+    <div style="display:flex;gap:12px;align-items:center">
+      <div style="width:56px;height:56px;border-radius:12px;background:linear-gradient(90deg,#7c3aed,#4f46e5);display:flex;align-items:center;justify-content:center;font-weight:800">KJ</div>
+      <div>
+        <div style="font-weight:700">Karan Jeevan</div>
+        <div class="small">ECE • Embedded • AI</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center">
+      <button id="resumeBtn" class="btn btn-primary">Resume</button>
+      <button id="themeBtn" class="btn" style="border:1px solid rgba(255,255,255,0.06)">Theme</button>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:36px;align-items:center;margin-top:24px;flex-wrap:wrap">
+    <div style="max-width:640px">
+      <div class="big-title">Hi — I'm <span style="background:linear-gradient(90deg,#9f7aea,#7c3aed);-webkit-background-clip:text;color:transparent">Karan Jeevan</span></div>
+      <p class="small" style="margin-top:12px">Electronics & Communication student building Edge AI, TinyML and futuristic embedded systems.</p>
+      <div style="margin-top:16px;display:flex;gap:12px">
+        <button class="btn btn-primary" onclick="scrollToId('projects')">View Projects</button>
+        <a href="#contact" class="btn" style="border:1px solid rgba(255,255,255,0.06)">Contact</a>
+      </div>
+    </div>
+
+    <div class="robot-wrap">
+      <div class="robot-scene card">
+        <div class="grid-bg"></div>
+        <div class="dot one"></div><div class="dot two"></div><div class="dot three"></div>
+
+        <!-- robot SVG -->
+        <svg class="robot" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#9f7aea"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
+          <g transform="translate(100,100)">
+            <circle cx="0" cy="-8" r="44" fill="#0b1220" stroke="url(#g1)" stroke-width="3"></circle>
+            <rect x="-36" y="-28" rx="8" width="72" height="56" fill="#071028" stroke="rgba(124,58,237,0.12)" stroke-width="2"></rect>
+            <g id="eyes" transform="translate(0,0)">
+              <ellipse class="eye eye-blink" cx="-18" cy="-6" rx="8" ry="8" fill="url(#g1)"></ellipse>
+              <ellipse class="eye eye-blink" cx="18" cy="-6" rx="8" ry="8" fill="url(#g1)"></ellipse>
+            </g>
+            <rect x="-18" y="10" width="36" height="8" rx="4" fill="#071028" stroke="rgba(255,255,255,0.03)"></rect>
+          </g>
+        </svg>
+
+      </div>
+    </div>
+  </div>
+
+  <section id="projects" style="margin-top:40px">
+    <h3 style="font-weight:700;margin-bottom:12px">Selected Projects</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+      <div class="card">
+        <h4 style="font-weight:700">Camouflage Technique Army Robot</h4>
+        <p class="small" style="margin-top:8px">Adaptive camouflage, obstacle detection and wireless control built on Arduino.</p>
+        <div style="margin-top:10px">
+          <a id="demo1" class="btn btn-primary" href="#" target="_blank">Live Demo</a>
+        </div>
+      </div>
+      <div class="card">
+        <h4 style="font-weight:700">IoT Plant Watering</h4>
+        <p class="small" style="margin-top:8px">Soil moisture, ESP modules, cloud alerts and automated pump control.</p>
+        <div style="margin-top:10px"><button class="btn" onclick="alert('Demo coming soon')">Demo coming soon</button></div>
+      </div>
+      <div class="card">
+        <h4 style="font-weight:700">Object Detection Camera</h4>
+        <p class="small" style="margin-top:8px">Jetson Nano real-time detection demo.</p>
+        <div style="margin-top:10px"><button class="btn" onclick="alert('Demo coming soon')">Demo coming soon</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="margin-top:36px">
+    <div style="display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap">
+      <div style="flex:1" class="card">
+        <h4 style="font-weight:700">Contact</h4>
+        <p class="small" style="margin-top:8px">Email: <a href="mailto:karankamla29697@gmail.com" style="color:#9f7aea">karankamla29697@gmail.com</a></p>
+        <p class="small">Location: Bengaluru, India</p>
+      </div>
+      <div style="width:340px" class="card">
+        <h4 style="font-weight:700">Quick Message</h4>
+        <form id="quickForm">
+          <input name="name" placeholder="Name" style="width:100%;padding:8px;margin-top:8px;border-radius:8px;background:#061126;border:1px solid rgba(255,255,255,0.03);color:#fff"/><br/>
+          <input name="email" placeholder="Email" style="width:100%;padding:8px;margin-top:8px;border-radius:8px;background:#061126;border:1px solid rgba(255,255,255,0.03);color:#fff"/><br/>
+          <textarea name="msg" placeholder="Message" style="width:100%;padding:8px;margin-top:8px;border-radius:8px;background:#061126;border:1px solid rgba(255,255,255,0.03);color:#fff"></textarea><br/>
+          <button class="btn btn-primary" type="button" onclick="alert('Form would be sent to Formspree after deployment')">Send</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer style="text-align:center;color:var(--muted);margin-top:40px">© 2025 Karan Jeevan — Futuristic Portfolio</footer>
+</div>
+
+<!-- resume modal -->
+<div id="resumeModal" class="resume-modal" aria-hidden="true">
+  <div class="resume-panel">
+    <a id="downloadResume" class="resume-download" href="https://drive.google.com/uc?export=download&id=1r17hMu581ifhaJQfcX33Q07XAth7RIVz" target="_blank" rel="noopener">Download PDF</a>
+    <iframe class="resume-frame" src="https://drive.google.com/file/d/1r17hMu581ifhaJQfcX33Q07XAth7RIVz/preview"></iframe>
+  </div>
+</div>
+
+<!-- floating chat & TTS -->
+<div class="fab" id="fab" title="Chat with portfolio assistant">💬</div>
+<div class="chat-panel" id="chatPanel" aria-hidden="true">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+    <div style="font-weight:700">Portfolio Assistant</div>
+    <div style="font-size:12px;color:var(--muted)">Voice: Cute</div>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div style="display:flex;gap:8px">
+    <input id="chatInput" style="flex:1;padding:8px;border-radius:8px;background:#061126;border:1px solid rgba(255,255,255,0.03);color:#fff" placeholder="Ask something..." />
+    <button id="sendBtn" class="btn btn-primary">Send</button>
+  </div>
+</div>
+
+<script>
+const PROJECT_LINKS = ["https://drive.google.com/file/d/1r17hMu581ifhaJQfcX33Q07XAth7RIVz/preview","",""];
+document.getElementById('demo1').href = PROJECT_LINKS[0] || '#';
+
+document.getElementById('themeBtn').addEventListener('click', ()=> document.documentElement.classList.toggle('dark'));
+document.getElementById('resumeBtn').addEventListener('click', ()=> document.getElementById('resumeModal').style.display='flex');
+document.getElementById('resumeModal').addEventListener('click', (e)=>{ if(e.target.id==='resumeModal') document.getElementById('resumeModal').style.display='none'; });
+
+function scrollToId(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+setInterval(()=>{ const eyes = document.querySelectorAll('.eye-blink'); eyes.forEach((el)=>{ el.style.transform='scaleY(1)'; setTimeout(()=>{ el.style.transform='scaleY(0.08)'; setTimeout(()=>el.style.transform='scaleY(1)',120); }, Math.random()*2000 + 500); }); }, 4200);
+
+const fab = document.getElementById('fab'); const chatPanel = document.getElementById('chatPanel'); const chatBody = document.getElementById('chatBody'); const chatInput = document.getElementById('chatInput'); const sendBtn = document.getElementById('sendBtn');
+fab.addEventListener('click', ()=> { chatPanel.style.display = chatPanel.style.display === 'block' ? 'none' : 'block'; appendBot('Hi 👋 I am the portfolio assistant. Ask me about projects or your resume!'); });
+
+function appendBot(text){ const d=document.createElement('div'); d.style.marginBottom='8px'; d.innerHTML = '<div style="background:linear-gradient(90deg,#7c3aed,#4f46e5);padding:8px;border-radius:8px;color:#fff;display:inline-block">'+text+'</div>'; chatBody.appendChild(d); chatBody.scrollTop = chatBody.scrollHeight; speak(text); }
+function appendUser(text){ const d=document.createElement('div'); d.style.marginBottom='8px'; d.innerHTML = '<div style="background:#0b1220;padding:8px;border-radius:8px;display:inline-block">'+text+'</div>'; chatBody.appendChild(d); chatBody.scrollTop = chatBody.scrollHeight; }
+
+sendBtn.addEventListener('click', async ()=>{ const text = chatInput.value.trim(); if(!text) return; appendUser(text); chatInput.value=''; appendBot('Thinking...'); try{ const res = await fetch('/.netlify/functions/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text})}); if(res.ok){ const j = await res.json(); const reply = j.reply || 'Sorry, no reply.'; chatBody.lastChild.remove(); appendBot(reply); } else { chatBody.lastChild.remove(); appendBot('I cannot reach the server. I can answer common offline: try "projects" or "resume".'); } }catch(e){ chatBody.lastChild.remove(); appendBot('Offline: try "projects" or "resume".'); }});
+
+function speak(text){ try{ if(!('speechSynthesis' in window)) return; const utter = new SpeechSynthesisUtterance(text); const voices = speechSynthesis.getVoices(); let chosen = null; for(const v of voices){ const name = v.name.toLowerCase(); if(name.includes('samantha')||name.includes('zira')||name.includes('google')||name.includes('female')){ chosen = v; break; } } if(!chosen && voices.length) chosen = voices.find(v=>v.lang && v.lang.startsWith('en')) || voices[0]; if(chosen) utter.voice = chosen; utter.rate = 0.95; utter.pitch = 1.05; utter.volume = 1.0; window.speechSynthesis.cancel(); window.speechSynthesis.speak(utter); }catch(e){ console.warn('tts failed', e); } }
+</script>
+
+</body>
+</html>
